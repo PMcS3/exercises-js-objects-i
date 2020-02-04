@@ -8,15 +8,6 @@ let process = require('process');
   2. Implement userCanAffordSofa
 */
 
-// --- DELETE THE LINES STARTING HERE ---
-let removeThisToStart = true;
-
-if (removeThisToStart) {
-  console.log('Hey! Open up storeWithArrays.js to see how to get started.');
-  process.exit();
-}
-
-// --- DELETE THE LINES ENDING HERE ---
 
 /**
  * Creates and returns a new user (as an array).
@@ -48,7 +39,14 @@ function newSofa(name, price) {
  * and `false` otherwise.
  */
 function userCanAffordSofa(user, sofa) {
-  // This is your job. :)
+  if (user[2] < sofa[1])
+  {
+    return false;
+  }
+  else
+  {
+    return true;
+  }
 }
 
 let allUsers = [
