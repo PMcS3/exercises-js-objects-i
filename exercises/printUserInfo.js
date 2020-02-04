@@ -7,11 +7,13 @@ let process = require('process');
 
 let user = {};
 
-user['firstName'] = '<Change This>';
-user['lastName'] = '<Change This>';
-user['currentLocation'] = '<Change This>';
-user['favoriteSongs'] = ['One Song', 'Another Great Song', 'Last Great Song'];
-user['age'] = 108;
+user['firstName'] = 'Christo';
+user['lastName'] = 'Sullivan';
+user['currentLocation'] = 'Ann Arbor, MI';
+user['favoriteSongs'] = ['Finish Line', 'Follow God', 'Sweet Caroline'];
+user['favoriteMovies'] = ['The Departed', 'Forrest Gump', 'Good Will Hunting'];
+user['age'] = 20;
+user['Favorite Food'] = 'Pizza'
 
 // To get started, set user['canBeDisplayed'] to true instead of false
 user['canBeDisplayed'] = true;
@@ -20,6 +22,7 @@ if (user['canBeDisplayed'] === false) {
   console.log('Hey! Open up printUserInfo.js to get started.');
   process.exit();
 }
+
 
 console.log(`Hello, ${user['firstName']} ${user['lastName']}.`);
 console.log();
@@ -32,6 +35,22 @@ if (user['age'] >= 100) {
   console.log();
 }
 
+if (user['Favorite Food'] === 'Pizza')
+{
+  console.log(`Ah ${user['Favorite Food']}, One Bite, Everyone knows the rules!`);
+  console.log();
+}
+else if (user['Favorite Foods'] === 'Chicken')
+{
+  console.log(`I see your favorite food is ${user['Favorite Food']} - cant go wrong with some pollo`);
+  console.log();
+}
+else
+{
+  console.log(`Yes! I love ${user['Favorite Food']}!`);
+  console.log();
+}
+ 
 console.log('Looks like you have great taste in music. Your favorite songs:');
 
 for (let i = 0; i < user['favoriteSongs'].length; i += 1) {
@@ -40,3 +59,38 @@ for (let i = 0; i < user['favoriteSongs'].length; i += 1) {
 
   console.log(`${songPosition}. ${songName}`);
 }
+
+console.log('Looks like you have great taste in movies. Your favorite movies:');
+
+for (let i = 0; i < user['favoriteMovies'].length; i += 1) {
+  let moviePosition = i + 1;
+  let movieName = user['favoriteMovies'][i];
+
+  console.log(`${moviePosition}. ${movieName}`);
+}
+
+function printFavorites(dict)
+{
+  //let bookMovies = dict['favoriteMovies'] + dict['favoriteSongs'];
+  let finalList = [];
+  let movies = dict['favoriteMovies'];
+  let music = dict['favoriteSongs'];
+  let favorites = movies.concat(music);
+  while(finalList.length < 6) 
+  {
+    for(i=0;i<favorites.length;i++)
+    {
+     let num = i+1;
+    finalList.push(num + '. ' + favorites[i]);
+    }
+  }
+  console.log('Your favorite media:');
+  return finalList;
+}
+
+if (require.main === module)
+{
+  console.log(printFavorites(user));
+}
+
+//module.exports = printUserInfo.js;
